@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Simple Task Manager</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #e3f2fd;
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+    }
+    .task-container {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
+      width: 100%;
+      max-width: 400px;
+    }
+    h2 {
+      text-align: center;
+      color: #1565c0;
+    }
+    .task-input {
+      display: flex;
+      margin-bottom: 20px;
+    }
+    .task-input input {
+      flex: 1;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #90caf9;
+      border-radius: 4px 0 0 4px;
+    }
+    .task-input button {
+      padding: 10px 16px;
+      background: #1565c0;
+      color: white;
+      border: none;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid #eee;
+    }
+    li .status {
+      font-size: 12px;
+      color: #2e7d32;
+      font-weight: bold;
+      margin-left: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="task-container">
+    <h2>Task Manager</h2>
+    <div class="task-input">
+      <input type="text" id="taskInput" placeholder="Enter new task" />
+      <button onclick="addTask()">Add</button>
+    </div>
+    <ul id="taskList"></ul>
+  </div>
+
+  <script>
+    function addTask() {
+      const taskInput = document.getElementById("taskInput");
+      const taskText = taskInput.value.trim();
+
+      if (taskText === "") return;
+
+      const li = document.createElement("li");
+
+      const leftSide = document.createElement("div");
+      leftSide.style.display = "flex";
+      leftSide.style.alignItems = "center";
+
+      const checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+      checkbox.style.marginRight = "10px";
+
+      const span = document.createElement("span");
+      span.textContent = taskText;
+
+      const status = document.createElement("span");
+      status.className = "status";
+      status.style.display = "none";
+      status.textContent = "Task Completed";
+
+      checkbox.addEventListener("change", function () {
+        if (this.checked) {
+          status.style.display = "inline";
+        } else {
+          status.style.display = "none";
+        }
+      });
+
+      leftSide.appendChild(checkbox);
+      leftSide.appendChild(span);
+
+      li.appendChild(leftSide);
+      li.appendChild(status);
+
+      document.getElementById("taskList").appendChild(li);
+
+      taskInput.value = "";
+    }
+  </script>
+</body>
+</html>

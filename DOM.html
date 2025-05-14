@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        p {
+            font-size: 20px;
+            color: black;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #008CBA;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #005f73;
+        }
+    </style>
+</head>
+<body>
+    <p id="text">Hello, World!</p>
+    <button id="changeBtn">Change Text</button>
+    <button id="addElementBtn">Add Element</button>
+    <button id="toggleBtn">Toggle Visibility</button>
+    <div id="container"></div>
+    
+    <script>
+        const paragraph = document.getElementById("text");
+        const button = document.getElementById("changeBtn");
+        const addElementBtn = document.getElementById("addElementBtn");
+        const toggleBtn = document.getElementById("toggleBtn");
+        const container = document.getElementById("container");
+
+        button.addEventListener("click", function() {
+            paragraph.textContent = "Text changed!"; 
+            paragraph.style.color = "blue"; 
+        });
+
+        addElementBtn.addEventListener("click", function() {
+            const newParagraph = document.createElement("p"); 
+            newParagraph.textContent = "This is a new paragraph!"; 
+            newParagraph.style.color = "green"; 
+            container.appendChild(newParagraph); 
+        });
+
+    
+        toggleBtn.addEventListener("click", function() {
+            if (paragraph.style.display === "none") {
+                paragraph.style.display = "block";
+            } else {
+                paragraph.style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>

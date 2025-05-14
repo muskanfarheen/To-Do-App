@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOM Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+        .alert-btn {
+            background-color: #ff5722;
+            color: white;
+        }
+        .open-btn {
+            background-color: #2196F3;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Browser Object Model (BOM) Example</h2>
+    <button class="alert-btn" onclick="showAlert()">Show Alert</button>
+    <button class="open-btn" onclick="openNewWindow()">Open New Window</button>
+
+    <script>
+        function showAlert() {
+            window.alert("Hello! This is a BOM Alert.");
+        }
+
+        function openNewWindow() {
+            window.open("https://www.google.co.in/webhp?hl=en&sa=X&ved=0ahUKEwiliprLhbmMAxVFyDgGHXOxOiUQPAgI", "_blank", "width=600,height=400");
+        }
+    </script>
+
+</body>
+</html>
